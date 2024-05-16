@@ -15,7 +15,7 @@ public class MulticastSenderReceiver {
     MulticastSenderReceiver(String name) {
         this.name = name;
         try {
-            address = InetAddress.getByName("224.0.0.1");
+            address = InetAddress.getByName("225.0.0.0");
             group = new MulticastSocket(port);
             new Receiver().start();
             new Sender().start();
@@ -57,7 +57,7 @@ public class MulticastSenderReceiver {
         }
     }
     public static void main(String[] args) {
-        new MulticastSenderReceiver(args[0]);
+        new MulticastSenderReceiver("name");
     }
 
 }
