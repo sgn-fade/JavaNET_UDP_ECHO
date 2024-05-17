@@ -29,7 +29,6 @@ public class Window extends JFrame {
 
     public Window() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //setBounds(100, 100, 800, 600);
         setLayout(new BorderLayout());
         textArea.setLineWrap(true);
         textArea.setWrapStyleWord(true);
@@ -46,7 +45,6 @@ public class Window extends JFrame {
                 }
                 port = Integer.parseInt(PORTTextField.getText());
                 name = NAMETextField.getText();
-                System.out.println(name);
                 messenger = new MessenderImpl(addr, port, name, ui);
                 messenger.start();
             }
@@ -58,7 +56,7 @@ public class Window extends JFrame {
             textArea.setText("");
         });
         disconnectButton.addActionListener(e -> {
-            messenger = null;
+            messenger.stop();
         });
         shutdownButton.addActionListener(e -> System.exit(0));
     }
